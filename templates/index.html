@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Boston house price prediction</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div>
+    <h1 style="text-align: center">Find best price of House </h1>
+
+    <div class="form">
+        <form action="/predict" method="POST">
+            <div class="row">
+                <div class="col">
+
+                    <label for="inputAddress"><b>CRIM</b> <i>(Per capita crime rate by town)</i></label>
+                    <input type="number" name="CRIM" id="CRIM" class="form-control" max="1000"
+                           placeholder="Enter values">
+                </div>
+                <div class="col">
+                    <label for="inputAddress"><b>ZN</b> <i>(Proportion of residential land zoned for lots over 25,000 sq.
+                        ft)</i></label>
+                    <input type="number" name="ZN" id="ZN" class="form-control" max="1000"
+                           placeholder="Enter values">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="inputAddress"><b>INDUS</b> <i>(Proportion of non-retail business acres per town)</i></label>
+                    <input type="number" name="INDUS" id="INDUS" class="form-control" max="1000"
+                           placeholder="Enter values">
+                </div>
+                <div class="col">
+
+                    <label for="inputAddress"><b>CHAS</b> <i>(Charles River dummy variable (= 1 if tract bounds river; 0
+                        otherwise))</i></label>
+                    <input min="0" max="1" type="number" name="CHAS" id="CHAS" class="form-control"
+                           placeholder="Enter values">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="inputAddress"><b>NOX</b> <i>(Nitric oxide concentration (parts per 10 million))</i></label>
+                    <input type="number" name="NOX" id="NOX" class="form-control" max="1000"
+                           placeholder="Enter values">
+                </div>
+                <div class="col">
+                    <label for="inputAddress"><b>RM</b> <i>(Average number of rooms per dwelling)</i></label>
+                    <input type="number" name="RM" id="RM" class="form-control" max="1000"
+                           placeholder="Enter values">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="inputAddress"><b>DIS</b> <i>(Weighted distances to five Boston employment centers)</i></label>
+                    <input type="number" name="DIS" id="DIS" class="form-control" max="1000"
+                           placeholder="Enter values">
+                </div>
+                <div class="col">
+                    <label for="inputAddress"><b>RAD</b> <i>(Index of accessibility to radial highways)</i></label>
+                    <input type="number" name="RAD" id="RAD" class="form-control" max="1000"
+                           placeholder="Enter values">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="inputAddress"><b>PTRATIO</b> <i>(Pupil-teacher ratio by town)</i></label>
+                    <input type="number" name="PTRATIO" id="PTRATIO" class="form-control" max="1000"
+                           placeholder="Enter values">
+                </div>
+
+                <div class="col">
+                    <label for="inputAddress"><b>LSTAT</b> <i>(Percentage of lower status of the population)</i></label>
+                    <input type="number" name="LSTAT" id="LSTAT" class="form-control" max="1000"
+                           placeholder="Enter values">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="inputAddress"><b>B</b> <i>(1000(Bk — 0.63)², where Bk is the proportion of [people of African
+                        American descent] by town)</i></label>
+                    <input type="number" name="B" id="B" class="form-control" max="1000"
+                           placeholder="Enter values">
+                </div>
+            </div>
+
+            <br/>
+            <div class="row">
+                <button type="submit" class="btn btn-primary">Find best price</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% if prediction %}
+
+<hr/>
+
+<div>
+    <div class="alert alert-success" role="alert"><p>Your house price could be approx. <b>${{prediction}}</b></p></div>
+
+
+</div>
+{% endif %}
+{% endblock %}
+
